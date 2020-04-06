@@ -1,12 +1,12 @@
 <?php
     require_once'function.php';
     $ph='';
-    $erreur = [];
+    $erreur = "";
     $phrase=[];
     if (isset($_POST['envoyer'])) {
         $ph=$_POST['phrase'];
         if (is_empty($ph)) {
-            $erreur[] = 'Veuillez saisir une phrase svp!';
+            $erreur = 'Veuillez saisir une phrase svp!';
         }else {
             $ph = preg_replace('/\.\s+/','.',$ph);
             $phrase = cut($ph);
@@ -33,10 +33,10 @@
             <form method="post">
                 <Label>Saisir</Label>
                 <textarea name="phrase"><?=$ph?></textarea>
-                <input type="submit" name="envoyer" value="Envoyer">
+                <input type="submit" name="envoyer" value="Envoyer">  
                 <?php if (isset($_POST['envoyer'])) { ?>
+                <span><?= $erreur ?></span>
                 <textarea readonly="yes"><?php for ($i=0; $i < long_chaine($erreur) ; $i++) { ?>
-                <span><?= $erreur[$i] ?></span>
                 <?php } for ($i=0; $i <long_chaine($phrase) ; $i++) { if (is_sentence($phrase[$i])) { if (long_chaine($phrase[$i])<=200) {
                 echo $phrase[$i].' '; } } } ?>
                 </textarea><?php } ?>
