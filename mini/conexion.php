@@ -1,18 +1,3 @@
-<?php
-    $login = "";
-    $pass = "";
-    if (isset($_POST['connexion'])) {
-        if(empty($login) || empty($pass)) {
-            $erreur = "Veuillez remplir ce champ !";
-        }else {
-            $login = $_POST['login'];
-            $pass = $_POST['pass'];
-        }
-        var_dump($login);
-        var_dump($pass);
-    }
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
