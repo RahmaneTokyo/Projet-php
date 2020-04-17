@@ -1,0 +1,591 @@
+/* La partie index contenant le header et le content */
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+.header {
+    height: 100px;
+    background: #090625;
+}
+.logo {
+    float: left;
+    background-image: url(../Images/logo.jpeg);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    height: 90%;
+    width: 5%;
+    margin-left: 1%;
+}
+.header-text {
+    float: left;
+    color: #ffffff;
+    margin-top: 2%;
+    margin-left: 33%;
+    font-size: 30px;
+    font-weight: bold;
+    font-size: 30px;
+}
+.content {
+    background-image: url(../Images/img-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 650px;
+}
+
+/* Partie concernant la page connexion */
+
+.connexion {
+    float: left;
+    width: 50%;
+    height: 450px;
+    background: #ffffff;
+    margin-left: 25%;
+    margin-top: 6%;
+    border-radius: 5px;
+}
+.headerr {
+    width: 100%;
+    height: 20%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #45b4d6;
+}
+.title {
+    float: left;
+    width: 20%;
+    height: 40%;
+    margin-left: 1.5%;
+    margin-top: 4%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Partie concernant les inputs et logos ainsi que les champs d'erreur */
+
+.input-form {
+    float: left;
+    margin-left: 5%;
+    width: 90%;
+    height: 70px;
+    margin-top: 5%;
+    background: #e6e6e6;
+}
+.control {
+    float: left;
+    width: 85%;
+    margin-top: 1.5%;
+    margin-left: 3%;
+    height: 47px;
+    border: 0px;
+    font-size: 30px;
+    font-weight: bold;
+    background: #e6e6e6;
+    color: #949494;
+}
+.icone1 {
+    float: right;
+    background-image: url(../Icônes/ic-login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 5%;
+    margin-top: 2%;
+    height: 40px;
+    width: 40px;
+}
+.icone2 {
+    float: right;
+    background-image: url(../Icônes/ic-password.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 5%;
+    margin-top: 2%;
+    height: 40px;
+    width: 40px;
+}
+.error {
+    float: left;
+    color: #b40000;
+    width: 100%;
+    margin-top: 1%;
+    height: 15px;
+    font-size: 30px;
+    font-weight: bold;
+}
+span {
+    float: left;
+    margin-left: 1%;
+    width: 40%;
+    height: 30px;
+    margin-left: 5%;
+    font-size: 22px;
+    color: #b40000;
+}
+
+/* Partie concernant le bouton de connexion et le lien d'inscription */
+
+.conex {
+    float: left;
+    width: 20%;
+    height: 50px;
+    margin-left: 5%;
+    margin-top: 4%;
+    border-radius: 7px;
+    border: 0px;
+    background: #45b4d6;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+}
+.inscription {
+    float: left;
+    width: 32.5%;
+    height: 8%;
+    margin-left: 5%;
+    margin-top: 5.2%;
+}
+.inscription a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    font-weight: bold;-size: 28px;
+    color: #949494;
+}
+
+/* Interface de l'admin */
+
+/* Entete */
+
+.cadre {
+    float: left;
+    width: 98%;
+    height: 98%;
+    margin-left: 1%;
+    margin-top: 0.5%;
+    border-radius: 3px;
+    background: #e6e6e6;
+}
+.entete {
+    float: left;
+    width: 100%;
+    height: 13%;
+    background: #45b4d6;
+}
+.title {
+    float: left;
+    width: 77.5%;
+    height: 100%;
+    margin-left: 8%;
+    margin-top: 1.5%;
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.button {
+    float: left;
+    width: 11%;
+    height: 60%;
+    margin-left: 0.5%;
+    margin-top: 1%;
+    border-radius: 10px;
+    font-size: 20px;
+    background: #1b81b1;
+    color: #ffffff;
+}
+
+/* Partie concernant l'image de l'admin et les onglets */
+
+.menu {
+    float: left;
+    width: 30%;
+    height: 65%;
+    margin-left: 2%;
+    margin-top: 4%;
+    background: #ffffff;
+    border-radius: 10px;
+}
+.avatar {
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top,#45b4d6,#45b4d6,#ffffff);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.image {
+    float: left;
+    width: 30%;
+    height: 70%;
+    border-radius: 70%;
+    border: 4px solid #ffffff;
+    margin-left: 7%;
+    margin-top: 5%;
+}
+.image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+}
+.prenom {
+    float: left;
+    width: 40%;
+    height: 20%;
+    margin-left: 5%;
+    margin-top: 11%;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.nom {
+    float: left;
+    width: 40%;
+    height: 20%;
+    margin-left: 18%;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Partie concernant les onglets */
+
+.onglet {
+    float: left;
+    width: 100%;
+    height: 13%;
+    margin-bottom: 2%;
+}
+.texte {
+    float: left;
+    width: 50%;
+    height: 60%;
+    font-size: 30px;
+    margin-left: 5%;
+    margin-top: 2.2%;
+    color: #949494;
+}
+.icone {
+    float: right;
+    width: 8%;
+    height: 70%;
+    margin-top: 2%;
+    margin-right: 3%;
+}
+.icone img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Partie concernant L'affichage du contenu des onglets */
+
+.interface {
+    float: right;
+    width: 65%;
+    height: 82%;
+    margin-right: 1.5%;
+    margin-top: 1%;
+}
+
+/* Partie inscription admin et joueur*/
+
+.fond {
+    float: left;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: #ffffff;
+}
+.fond1 {
+    float: left;
+    width: 100%;
+    height: 99%;
+    border-radius: 15px;
+    background: #ffffff;
+    border: 3px solid #cacaca;
+}
+.fond2 {
+    float: left;
+    width: 100%;
+    height: 99%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom: 3px solid;
+    border-bottom-color: #cacaca;
+}
+.fond3 {
+    float: left;
+    width: 100%;
+    height: 98.9%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom: 3px solid;
+    border-bottom-color: #cacaca;
+}
+.fond4 {
+    float: left;
+    width: 100%;
+    height: 98.7%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom: 2px solid;
+    border-bottom-color: #cacaca;
+}
+.formulaire {
+    float: left;
+    width: 60%;
+    height: 99%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.inscrit {
+    float: left;
+    width: 90%;
+    height: 6%;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 35px;
+    font-weight: bold;
+}
+.petit {
+    float: left;
+    width: 90%;
+    height: 3%;
+    margin-top: 1.5%;
+    margin-left: 5%;
+    color: #949494;
+}
+.form {
+    float: left;
+    width: 100%;
+    height: 82%;
+    margin-top: 2%;
+    border-top: 3px solid #949494;
+}
+.label {    
+float: left;
+    width: 80%;
+    height: 4%;
+    margin-left: 5.5%;
+    color: #949494;
+}
+.champ {
+    float: left;
+    width: 80%;
+    height: 10%;
+    margin-left: 5%;
+    margin-top: 0.5%;
+    border-radius: 5px;
+    border: 3px solid #949494;
+}
+.champs {
+    float: left;
+    width: 80%;
+    height: 10%;
+    margin-left: 5%;
+    margin-top: 0.5%;
+    border-radius: 5px;
+    border: 3px solid #45b4d6;
+}
+input {
+    float: left;
+    width: 95%;
+    height: 95%;
+    margin-left: 2%;
+    border: 0px;
+    font-size: 25px;
+    color: #949494;
+}
+
+/* partie du texte avatar créer un compte et choisir un fichier */
+
+.texteavatar {
+    float: left;
+    width: 17%;
+    height: 5%;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 20px;
+}
+.fichier {
+    float: right;
+    width: 25%;
+    height: 7%;
+    margin-right: 14.5%;
+    margin-top: 1%;
+    background: #45b4d6;
+    border-radius: 5px;
+}
+.label-file {
+    float: left;
+    width: 98%;
+    height: 30%;
+    margin-left: 5%;
+    margin-top: 3.5%;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.choisir {
+    display: none;
+}
+button {
+    float: left;
+    width: 20%;
+    height: 50px;
+    margin-left: 8%;
+    margin-top: 7%;
+    background: #45b4d6;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 5px;
+}
+
+/* La partie contenant l'image de l'avatar et le texte en dessous */
+
+.avatarr {
+    float: left;
+    width: 26%;
+    height: 46%;
+    margin-left: 5%;
+    margin-top: 2%;
+    border-radius: 50%;
+    border: 5px solid #45b4d6;
+}
+.joueur {
+    float: left;
+    width: 17%;
+    height: 5%;
+    margin-top: 0.5%;
+    margin-left: 10.5%;
+    font-size: 22px;
+}
+
+/* Partie liste des questions */
+
+.haut {
+    float: left;
+    width: 100%;
+    height: 13%;
+}
+.tete {
+    float: left;
+    width: 31%;
+    height: 30px;
+    font-size: 30px;
+    margin-left: 30%;
+    margin-top: 2%;
+    color: #949494;
+}
+.field {
+    float: left;
+    width: 5%;
+    margin-top: 2%;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #949494;
+}
+.ok {
+    float: left;
+    width: 5%;
+    height: 30px;
+    margin-top: 2%;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    background: #3c3ac5;
+}
+.encadre {
+    float: left;
+    width: 96%;
+    height: 83%;
+    margin-left: 2%;
+    border-radius: 5px;
+    border: 2px solid #949494;
+}
+
+/* Partie liste des joueurs */
+
+.fonde {
+    float: left;
+    width: 70%;
+    height: 100%;
+    border-radius: 15px;
+    background: #ffffff;
+}
+.teter {
+    float: left;
+    width: 70%;
+    height: 40px;
+    margin-left: 15%;
+    font-size: 30px;
+    margin-top: 2%;
+    color: #949494;
+    font-style: italic;
+    font-weight: bold;
+}
+.encadrer {
+    float: left;
+    width: 90%;
+    height: 75%;
+    margin-left: 4.5%;
+    border-radius: 5px;
+    border: 2px solid #45b4d6;
+}
+.colonne {
+    float: left;
+    width: 30%;
+    height: 95%;
+    margin-left: 2.5%;
+    margin-top: 1.5%;
+}
+.colone {
+    float: right;
+    width: 17%;
+    height: 95%;
+    margin-right: 2.5%;
+    margin-top: 1.5%;
+}
+.identite {
+    float: left;
+    width: 95%;
+    height: 8%;
+    margin-left: 2.4%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #5c5959;
+}
+.id {
+    float: left;
+    width: 95%;
+    height: 8.2%;
+    margin-left: 2.4%;
+    margin-bottom: 1.5%;
+    font-size: 22px;
+    font-weight: bold;
+    color: #949494;
+}
+.ide {
+    float: left;
+    width: 95%;
+    height: 8.2%;
+    text-align: right;
+    margin-left: 2.4%;
+    margin-bottom: 2.5%;
+    font-size: 22px;
+    font-weight: bold;
+    color: #949494;
+}
+.suivant {
+    float: right;
+    width: 20%;
+    height: 10%;
+    background: #1b81b1;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 1.5%;
+    margin-right: 5%;
+    font-size: 20px;
+}
