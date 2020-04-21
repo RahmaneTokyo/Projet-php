@@ -72,101 +72,77 @@ function is_car_alpha ($car) {
   return false;
 }
 
-// Fonction qui stocke les données dans le fichier json apres verification
+// Fonction permettant d'uploader une image dans un dossier
 
-function save_admin_to_json ($login){
-  $json_data= file_get_contents('./data/utilisateur.json');
+function validation_donnees($login,$pwd,$confirm_pwd,$prenom,$nom,$profil,$image,$imagePath,$imageExtension,$imageSize){
+  $json_data = file_get_contents('./data/utilisateur.json');
+  $decode_flux = json_decode($json_data, true);
+  $message = "";
+  $success = "";
+  //On contrôle les mots de pass
+  if ($pwd != $confirm_pwd) 
+  {
+    $message = "Le mot de passe doit etre identique";
+  }
+    //On vérifie le login
+    foreach ($decode_flux as $value) 
+    {
 
-  $decode_flux= json_decode($json_data, true);
-  $message='';
-  $success='';
-  foreach ($decode_flux as $value){
-    if ($login == $value['login']){
-        $message='le login existe deja' ;
-        break;
+      if ($login == $value['login']) {
+        $message = "Le login existe deja";
+      break;
+      }
+    }  
+    
+    //On contrôle si le user à envoyer une photo
+    if(empty($image))
+    {
+        $message = "L'image de l'avatar obligatoire";
     }else{
-      if ($_POST['password']!= $_POST['confirm']){
-        $message='Les mots de passe doivent etre identiques' ;
-        break;
-      }else{
-          $nom = $_POST['nom'];
-          $nom = strtoupper($nom);
-          $prenom = $_POST['prenom'];
-          $prenom = ucfirst($prenom);
-          $data= array(
-            "nom"=> $nom,
-            "prenom"=>$prenom,
-            "login"=> $_POST["login"],
-            "password"=>$_POST["password"],
-            "profile"=>"admin"
-          );
+        //On contrôle les extensions
+        if($imageExtension != "jpg" && $imageExtension != "jpeg" && $imageExtension != "png")
+        {
+          $message = "Seuls les extensions JPG ou JPEG OU PNG sont autorisées";
+        }
+        //On contrôle la taille (elle ne doit pas dépasser 5 000 000) indice : on utilise $imageSize
+        if ($imageSize > 5000000) 
+        {
+          $message = "L'image ne doit pas dépasser 500MB";
+        }
+        //On envoi l'image en testant l'upload (si true on envoi si false on affiche un message d'erreur)
+        if(!move_uploaded_file($_FILES['image']['tmp_name'],$imagePath))
+        {
+           $message = "Erreur au niveau de l'envoi de l'image";
+        }
+
+    }
+
+    if (!empty($message)) {
+      echo '<span id="msg" style = "color: blue">'.$message.'</span>';
+    }else{
+        //On récupère les données du JSON
+        $array_data = getData($file="utilisateur");
+        //On crée la structure du nouveau admin
+        $data = array(
+          "prenom" => $prenom,
+          "nom" => $nom,
+          "login" => $login,
+          "password" => $pwd,
+          "profile" => $profil,
+          "avatar"  => $imagePath
+        );
+        //On implémente les données du nouveau user dans notre tableau JSON
+        $array_data[] = $data;
+        //On encode le tableau JSON  en file JSON
+        $finally_array = json_encode($array_data);
+        //Le lien de notre fichier JSON
+        $lien_file_json = "data/utilisateur.json";
+        //On ajoute le tout dans notre fichier JSON tout en controlant l'envoi
+        if(file_put_contents($lien_file_json,$finally_array))
+        {
+            //On affiche ce message si tout est OK
+            echo $success = '<span id="msg" style="color:green;">Enregistrement effectués</span>';
         }
     }
   }
-  if (!empty($message)){
-    echo '<span id="msg" style="color: red">'.$message.'</span>';
-  }
-  if (!empty($data)){
-    $decode_flux[]= $data;
-    $decode_flux= json_encode($decode_flux);
-    file_put_contents('./data/utilisateur.json', $decode_flux);
-    //echo $success='<span id="msg" style="color: green">enregistrement effectués!</span>';
 
-    $_POST["nom"]='';
-    $_POST["prenom"]='';
-    $_POST["login"]='';
-    $_POST["password"]='';
-    $_POST["confirm"]='';
-  }
-
-
-}
-
-
-function save_player_to_json ($login){
-  $json_data= file_get_contents('./data/utilisateur.json');
-
-  $decode_flux= json_decode($json_data, true);
-  $message='';
-  $success='';
-  foreach ($decode_flux as $value){
-    if ($login == $value['login']){
-        $message='Ce login existe deja' ;
-        break;
-    }else{
-      if ($_POST['password']!= $_POST['confirm']){
-        $message='Les mots de passe doivent etre identiques' ;
-        break;
-      }else{
-          $nom = $_POST['nom'];
-          $nom = strtoupper($nom);
-          $prenom = $_POST['prenom'];
-          $prenom = ucfirst($prenom);
-          $data= array(
-            "nom"=> $nom,
-            "prenom"=>$prenom,
-            "login"=> $_POST["login"],
-            "password"=>$_POST["password"],
-            "profile"=>"joueur"
-          );
-        }
-    }
-  }
-  if (!empty($message)){
-    echo '<span id="msg" style="color: red">'.$message.'</span>';
-  }
-  if (!empty($data)){
-    $decode_flux[]= $data;
-    $decode_flux= json_encode($decode_flux);
-    file_put_contents('./data/utilisateur.json', $decode_flux);
-    //echo $success='<span id="msg" style="color: green">enregistrement effectués!</span>';
-
-    $_POST["nom"]='';
-    $_POST["prenom"]='';
-    $_POST["login"]='';
-    $_POST["password"]='';
-    $_POST["confirm"]='';
-  }
-
-
-}
