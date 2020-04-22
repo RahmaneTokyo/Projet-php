@@ -473,8 +473,8 @@ button {
     border: 5px solid #45b4d6;
 }
 .avatar img {
-    width: 20px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
 }
 .avataarr {
     float: left;
@@ -494,12 +494,17 @@ button {
     font-size: 22px;
 }
 .joueurr {
-    position: absolute;
+    float: left;
     width: 17%;
     height: 5%;
+    margin-left: 1%;
+    font-size: 22px;
+}
+.joueeur {
+    position: absolute;
     margin-left: 73%;
     margin-top: 22%;
-    font-size: 22px;
+    font-size: 25px;
 }
 
 /* Partie liste des questions */
