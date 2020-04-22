@@ -51,8 +51,8 @@
                                     <div class="creer"> <button type="submit" name="submit" id="connexion"> Créer compte </button> </div>
                                 </form>
                             </div>
-                            <img id="output" class="avataarr">
-                            <div class="joueurr">Avatar du joueur</div>
+                            <img id="output" class="avatarr">
+                            <div class="joueeur">Avatar du joueur</div>
                         </div>
                     </div>
                 </div>
