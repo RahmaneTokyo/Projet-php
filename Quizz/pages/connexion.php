@@ -8,6 +8,7 @@
                 $_SESSION['profile'] = $value['profile'];
                 $_SESSION['prenom'] = $value['prenom'];
                 $_SESSION['nom'] = $value['nom'];
+                $_SESSION['score'] = $value['score'];
                 $_SESSION['avatar'] = $value['avatar'];
                 if ($value["profile"] === "admin") {
                 header ("location: index.php?lien=admin");
@@ -41,33 +42,5 @@
     </form>
 </div>
 
-<script>
-    document.getElementById("form-connexion").addEventListener("submit",function(e) {
-
-        const inputs = document.getElementsByTagName("input");
-        var error = false
-        for (input of inputs) {
-            if (input.hasAttribute("error")) {
-                var idDivError = input.getAttribute("error")
-                if(!input.value) {
-                    document.getElementById(idDivError).innerText = "Champ obligatoire !"
-                    error = true
-                }
-            }
-        }
-        if (error) {
-            e.preventDefault();
-            return false
-        }
-    })
-
-    const inputs = document.getElementsByTagName("input");
-    for (input of inputs) {
-        input.addEventListener("keyup",function(e) {
-            if (e.target.hasAttribute("error")) {
-                var idDivError = e.target.getAttribute("error")
-                document.getElementById(idDivError).innerText = ""
-            }
-        })
-    }
+<script src="public/js/validation.js">
 </script>
