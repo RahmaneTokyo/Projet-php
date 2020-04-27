@@ -5,7 +5,6 @@
     }
 ?>
 
-
 <div class="cadre">
     <div class="entete">
     <div class="title">CRÉER ET PARAMÉRTER VOS QUIZZ</div>
@@ -46,6 +45,8 @@
                 }elseif ($_GET['block'] == "CreerQuestions"){
                     include ("creerquestions.php");
                 }
+            }else {
+                header("location: index.php?lien=admin&block=ListeJoueurs");
             }
         ?>
     </div>
