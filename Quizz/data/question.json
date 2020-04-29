@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Quelle est la capitale du S\u00e9n\u00e9gal ?",
+        "nbr_point": "1",
+        "type_reponse": "multiple",
+        "reponses_possible": [
+            "Dakar",
+            "Paris"
+        ],
+        "bonnes_reponses": [
+            "Dakar"
+        ]
+    },
+    {
+        "question": "Combien font 2+4",
+        "nbr_point": "2",
+        "type_reponse": "simple",
+        "reponses_possible": [
+            "8",
+            "6",
+            "2"
+        ],
+        "bonnes_reponses": [
+            "6"
+        ]
+    }
+]
