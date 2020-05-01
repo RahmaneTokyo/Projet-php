@@ -530,10 +530,10 @@ input {
 }
 .tete {
     float: left;
-    width: 31%;
+    width: 40%;
     height: 30px;
     font-size: 30px;
-    margin-left: 30%;
+    margin-left: 25%;
     margin-top: 2%;
     color: #949494;
 }
@@ -558,8 +558,9 @@ input {
 .encadre {
     float: left;
     width: 96%;
-    height: 83%;
+    min-height: 430px;
     margin-left: 2%;
+    margin-top: 1%;
     border-radius: 5px;
     border: 2px solid #949494;
 }
@@ -993,4 +994,25 @@ form {
     margin-top: 2%;
     margin-right: 2%;
     margin-bottom: 2%;
+}
+
+/* Partie liste Questions */
+
+.pages {
+    float: left;
+    width: 95%;
+    height: 25px;
+    margin-left: 2.5%;
+}
+.next {
+    float: right;
+    text-decoration: none;
+    color: #45b4d6;
+    font-size: 20px;
+}
+.previous {
+    float: left;
+    text-decoration: none;
+    color: #45b4d6;
+    font-size: 20px;
 }
