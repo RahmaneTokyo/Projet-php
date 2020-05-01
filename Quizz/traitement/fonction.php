@@ -92,7 +92,7 @@ function validation_donnees($login,$pwd,$confirm_pwd,$prenom,$nom,$profil,$image
         $message = "Le login existe deja";
       break;
       }
-    }  
+    } 
     
     //On contrôle si le user à envoyer une photo
     if(empty($image))
@@ -118,7 +118,7 @@ function validation_donnees($login,$pwd,$confirm_pwd,$prenom,$nom,$profil,$image
     }
 
     if (!empty($message)) {
-      echo '<span id="msg" style = "color: blue">'.$message.'</span>';
+      echo $message;
     }else{
         //On récupère les données du JSON
         $array_data = getData($file="utilisateur");
@@ -143,39 +143,68 @@ function validation_donnees($login,$pwd,$confirm_pwd,$prenom,$nom,$profil,$image
     }
   }
 
-/* Fonction de tri pagination */
 
-function array_sort($array,$on,$order=SORT_ASC)
-{
-    $new_array = array();
-    $sortable_array = array();
 
-    if (count($array) > 0) {
-        foreach ($array as $k => $v) {
-            if (is_array($v)) {
-                foreach ($v as $k2 => $v2) {
-                    if ($k2 == $on) { 
-                        $sortable_array[$k] = $v2;
+
+
+
+
+function paginate ($tab, $nbr_questions){
+
+    $nb_articles_total = count( $tab);
+    $nb_per_page = $nbr_questions;
+    $nb_pages = ceil($nb_articles_total / $nb_per_page);
+    if (isset($_GET['page'])) {
+        $num_page = $_GET['page'];
+    }else{
+        $num_page=1;
+    }
+    echo 'Nombre de pages: ' . $nb_pages . '<br>';
+    echo 'Page '.$num_page.'/'.$nb_pages. '<br>';
+    echo '<hr>';
+
+
+    $indideD = ($num_page - 1) * $nb_per_page;
+    $indiceF = $indideD + $nb_per_page - 1;
+    for ($i=$indideD; $i<=$indiceF; $i++){
+        if (array_key_exists($i, $tab)) {
+            echo ($i+1).' <span style="width:90%; color: #45b4d6; font-size:20px;"> '
+                .$tab[$i]['question'].'</span> <br>';
+            foreach ($tab[$i]['reponses_possible'] as $key){
+                if ($tab[$i]['type_reponse']=='texte'){
+                    echo'<input  type="text" name="" value="'.$key.'" disabled> <br>';
+                } elseif  ($tab[$i]['type_reponse']=='simple'){
+                    if (in_array($key, $tab[$i]['bonnes_reponses'])) {
+                        echo'<input style="background-color: yellow" disabled type="radio" checked name="radio'.$i.'">'.' '.$key.'<br>';
+                    }else{
+                        echo'<input style="background-color: yellow" disabled type="radio" name="radio'.$i.'">'.' '.$key.'<br>';
+                    }
+                }else{
+                    if (in_array($key, $tab[$i]['bonnes_reponses'])) {
+                        echo '<input style="color: yellow" type="checkbox" disabled checked   name="">' . ' ' . $key.'<br>';
+                    }else{
+                        echo '<input style="color: yellow" type="checkbox" disabled   name="">' . ' ' . $key.'<br>';
                     }
                 }
-            } else {
-                $sortable_array[$k] = $v;
+
+
             }
+            echo '<hr>';
+
         }
 
-        switch ($order) {
-            case SORT_ASC:
-                asort($sortable_array);
-                break;
-            case SORT_DESC:
-                arsort($sortable_array);
-                break;
-        }
-
-        foreach ($sortable_array as $k => $v) {
-            $new_array[$k] = $array[$k];
-        }
     }
 
-    return $new_array;
-  }
+    echo '<div class="pages">';
+    if ($num_page > 1){
+        $precedent= $num_page - 1;
+        echo '<a class="previous"  href="index.php?lien=admin&block=ListeQuestions&page='.$precedent.'">Précédent</a>';
+    }
+
+    if ($num_page != $nb_pages){
+        $suivant= $num_page + 1;
+        echo '<a class="next" href="index.php?lien=admin&block=ListeQuestions&page='.$suivant.'">Suivant</a>';
+    }
+
+    echo '</div>';
+}
