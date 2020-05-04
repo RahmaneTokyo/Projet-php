@@ -558,11 +558,12 @@ input {
 .encadre {
     float: left;
     width: 96%;
-    min-height: 430px;
+    max-height: 390px;
+    overflow: auto;
     margin-left: 2%;
     margin-top: 1%;
     border-radius: 5px;
-    border: 2px solid #949494;
+    border: 2px solid #45b4d6;
 }
 
     /* Partie liste des joueurs */
@@ -588,24 +589,12 @@ input {
 .encadrer {
     float: left;
     width: 90%;
-    min-height: 400px;
+    max-height: 400px;
+    overflow: auto;
     margin-left: 4.5%;
     margin-bottom: 1%;
     border-radius: 5px;
     border: 2px solid #45b4d6;
-}
-.page {
-    float: right;
-    width: 35%;
-    height: 6%;
-    font-size: 23px;
-}
-.page a {
-    float: left;
-    width: 5%;
-    margin-left: 8%;
-    text-decoration: none;
-    color: #45b4d6;
 }
 
 /* Partie joueur */
@@ -798,13 +787,6 @@ input {
     margin-top: 0.5%;
     color: #45b4d6;
 }
-.page {
-    float: left;
-    width: 85%;
-    height: 7%;
-    margin-left: 7%;
-    margin-top: 2%;
-}
 .suivant {
     float: right;
     width: 15%;
@@ -886,7 +868,7 @@ form {
 .zone3 {
     float: left;
     width: 88%;
-    min-height: 220px;
+    min-height: 150px;
     margin-left: 11%;
     margin-top: 2%;
 }
@@ -997,11 +979,51 @@ form {
 }
 
 /* Partie liste Questions */
+.zonequestion {
+    float: left;
+    width: 100%;
+    height: 10%;
+}
+.numero {
+    float: left;
+    width: 2%;
+    height: 100%;
+    font-size: 25px;
+    margin-left: 2%;
+    margin-top: 1%;
+    color: #45b4d6;
+}
+.laquestion {
+    float: left;
+    width: 80%;
+    height: 100%;
+    font-size: 25px;
+    color: #45b4d6;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.zonerep1 {
+    float: left;
+    width: 40%;
+    height: 20px;
+    margin-left: 10%;
+    margin-top: 1%;
+    font-size: 18px;
+    color: #000000;
+    background: transparent;
+}
+.zoneselect1 {
+    float: left;
+    width: 10%;
+    height: 50%;
+    margin-top: 1%;
+}
 
 .pages {
     float: left;
     width: 95%;
     height: 25px;
+    margin-top: 1.5%;
     margin-left: 2.5%;
 }
 .next {
