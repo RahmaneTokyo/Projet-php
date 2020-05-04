@@ -2,7 +2,7 @@
 
 <?php
 
-    $reponses_possible=array(
+    $reponse_possible=array(
         'multiple'=>array(),
         'simple'=>array(),
         'text'=>array()
@@ -11,7 +11,7 @@
     $bonne_reponse=array(
         'multiple'=>array(),
         'simple'=>array(),
-        'text'=>array(),
+        'text'=>array()
     );
 
     // VALIDATION BACK END AVEC PHP..................................................................
@@ -28,26 +28,26 @@
     //ON MET LES TYPES DE REPONSES DANS UN TABLEAU ET LES BONNES REPONSES CHOISI DANS UN AUTRE TABLEAU....................................
 
                 if ($type_reponse=== "multiple"){
-                    while (isset($_POST['Reponse_'.$i]) && !empty($_POST['Reponse_'.$i])){
-                        array_push($reponses_possible['multiple'], $_POST['Reponse_'.$i]);
+                    while (isset($_POST['Reponse_'.$i])) {
+                        array_push($reponse_possible['multiple'], $_POST['Reponse_'.$i]);
                         if (!empty($_POST['radio_'.$i])){
-                            array_push($bonne_reponse['multiple'], $_POST['Reponse_'.$i]);
+                            array_push($bonne_reponse['multiple'], $_POST['Reponse_'.$i], $_POST['radio_'.$i]);
                         }
                         $i++;
                     }
                 }else
                     if ($type_reponse=== "simple"){
-                        while (isset($_POST['Reponse_'.$i]) && !empty($_POST['Reponse_'.$i])){
+                        while (isset($_POST['Reponse_'.$i])) {
                             array_push($reponses_possible['simple'], $_POST['Reponse_'.$i]);
                             if (!empty($_POST['checkbox_'.$i])){
-                                array_push($bonne_reponse['simple'], $_POST['Reponse_'.$i]);
+                                array_push($bonne_reponse['simple'], $_POST['Reponse_'.$i], $_POST['checkbox_'.$i]);
                             }
                             $i++;
                         }
                     }else
-                        if ($type_reponse=== "text"){
-                            if (!empty($_POST['Reponse_text'])){
-                                array_push($reponses_possible['text'], $_POST['Reponse_text']);
+                        if ($type_reponse=== "text") {
+                            if (!empty($_POST['Reponse_'.$i])){
+                                array_push($reponse_possible['text'], $_POST['Reponse_'.$i]);
                             }
                         }
 
@@ -61,9 +61,9 @@
                     $creer_question['type_reponse']= $_POST['type_reponse'];
             
                     if ($creer_question['type_reponse'] == "multiple"){
-                        if (!empty($reponses_possible['multiple'])){
-                            $creer_question['reponses_possible']= $reponses_possible['multiple'];
-                            $creer_question['bonnes_reponses']= $bonne_reponse['multiple'];
+                        if (!empty($reponse_possible['multiple'])){
+                            $creer_question['reponse_possible']= $reponse_possible['multiple'];
+                            $creer_question['bonne_reponse']= $bonne_reponse['multiple'];
 
                             $js= file_get_contents('./data/question.json');
                             $js= json_decode($js, true);
@@ -76,8 +76,8 @@
                     }
                     if ($creer_question['type_reponse'] == "simple"){
                         if (!empty($reponses_possible['simple'])){
-                            $creer_question['reponses_possible']= $reponses_possible['simple'];
-                            $creer_question['bonnes_reponses']= $bonne_reponse['simple'];
+                            $creer_question['reponse_possible']= $reponses_possible['simple'];
+                            $creer_question['bonne_reponse']= $bonne_reponse['simple'];
 
                             $js= file_get_contents('./data/question.json');
                             $js= json_decode($js, true);
@@ -89,8 +89,8 @@
                         }
                     }
                     if ($creer_question['type_reponse'] == "text"){
-                        if (!empty($reponses_possible['text'])){
-                            $creer_question['bonnes_reponses']= $reponses_possible['text'];
+                        if (!empty($reponse_possible['text'])){
+                            $creer_question['reponse_possible']= $reponse_possible['text'];
 
                             $js= file_get_contents('./data/question.json');
                             $js= json_decode($js, true);
@@ -160,7 +160,7 @@
         newInput.setAttribute('id', 'row_'+nbrRow);
 
         if (selectOptions.value==="multiple") {
-            //Erreur:Fallait ajouter le <div class="error" id="error_${nbrRow}"></div> car c'est là oû on écrit l'erreur
+    // Erreur : Faut toujours ajouter le <div class="error" id="error_${nbrRow}"></div> car c'est là oû on écrit l'erreur
             newInput.innerHTML= ` 
                 <input type="text" name="Reponse_${nbrRow}" error="error_${nbrRow}" class="saisiee" placeholder="Reponse_${nbrRow}">
                 <input type="checkbox" name="radio_${nbrRow}" class="checkbox">
@@ -183,7 +183,7 @@
         if (selectOptions.value==="text") {
             deleteInput.remove();
             newInput.innerHTML= ` 
-                <input type="text" name="Reponse_text" error="error_${nbrRow}" class="saisiee" placeholder="Reponse_text">
+                <input type="text" name="Reponse_${nbrRow}" error="error_${nbrRow}" class="saisiee" placeholder="Reponse_text">
                 <button type="button" onclick="onDeleteInput(${nbrRow})" class="btn btn-supprimer"><img src="./public/Icônes/ic-supprimer.png"></button>
                 <div class="error" id="error_${nbrRow}"></div>
                 `;
@@ -241,10 +241,10 @@
             }
         }
         // Toujours mettre le if en dehors de la boucle for
+
         if(error){
             e.preventDefault();
             return false;
         }
-           
     })
 </script>
