@@ -6,15 +6,24 @@
     foreach($js as $value) {
         $tab[] = $value;
     }
-    if (isset($_POST['ok'])){
+
+    $data = file_get_contents('./data/nombre.json');
+    $data = json_decode($data, true);
+    $_SESSION['nbr'] = $data['nbrquestion'];
+    if (isset($_POST['submit'])){
 
         $nbr=$_POST['number'];
-        if (empty($_POST['number'])){
-            echo 'entrer une valeur';
-        }elseif ($_POST['number']<= 0){
-            echo 'entrer une valeur superieure a 0';
+        if ($nbr < 5) {
+            $message = "Saisir un nombre supérieur ou égal à 5";
         }else{
             $_SESSION['nbr']=$nbr;
+            $data = file_get_contents('./data/nombre.json');
+            $data = json_decode($data, true);
+            $data = array (
+                "nbrquestion" => $nbr
+            );
+            $datafinal = json_encode($data);
+            file_put_contents('./data/nombre.json', $datafinal);
         }
     }
 ?>
@@ -23,10 +32,15 @@
 
 <div class="fond">
     <div class="haut">
-        <form method="POST" action="">
+        
+    <span class="erreur"> <?php if (isset($message)) { echo $message; } ?> </span>
+        <form method="POST" action="" id="form-connexion">
             <div class="tete">Nombre de questions/jeu</div>
-            <input class="field" type="text" name="number" id="">
-            <input type="submit" value="OK" class="ok" name="ok" id="">
+            <input class="field" type="text" name="number" id="" value="<?= $_SESSION['nbr'] ?>" error="error-1">
+            <input type="submit" value="OK" class="ok" name="submit" id="">
+            <div class="erreur">    
+                <div class="error" id="error-1"></div>
+            </div>
         </form>
     </div>
     <div class="encadre">
@@ -34,11 +48,10 @@
 <!-- Pagination des questions --> <!-- Pagination des questions --> <!-- Pagination des questions --> <!-- Pagination des questions -->
 
         <?php
-            if (!empty($_SESSION['nbr'])) {
                 $nbr_questions = $_SESSION['nbr'];
 
                 $nb_articles_total = count( $tab);
-                $nb_per_page = $nbr_questions;
+                $nb_per_page = 5;
                 $nb_pages = ceil($nb_articles_total / $nb_per_page);
                 if (isset($_GET['page'])) {
                     $num_page = $_GET['page'];
@@ -59,41 +72,50 @@
                             if ($tab[$i]['type_reponse']=='text'){
                                 if(in_array($key, $tab[$i]['reponse_possible'])){
                                     ?>
-                                        <input class="zonerep1" type="text" value="<?= $key ?>">
+                                        <div class="zonereponse1">
+                                            <input class="zonerep1" type="text" value="<?= $key ?>">
+                                        </div>
                                     <?php
                                 }
                             }
                             if  ($tab[$i]['type_reponse']=='simple'){
                                 if (in_array($key, $tab[$i]['bonne_reponse'])) {
                                     ?>
-                                        <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
-                                        <input class="zoneselect1" disabled type="radio" checked name="radio<?=$i?>">
+                                        <div class="zonereponse">
+                                            <input class="zoneselect1" disabled type="radio" checked name="radio<?=$i?>">
+                                            <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
+                                        </div>
                                     <?php
                                 }else {
                                     ?>
-                                        <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
-                                        <input class="zoneselect1" disabled type="radio" name="radio<?=$i?>">
+                                        <div class="zonereponse">
+                                            <input class="zoneselect1" disabled type="radio" name="radio<?=$i?>">
+                                            <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
+                                        </div>
                                     <?php
                                 }
                             }
                             if ($tab[$i]['type_reponse']=='multiple') {
                                 if (in_array($key, $tab[$i]['bonne_reponse'])) {
                                     ?>
-                                        <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
-                                        <input class="zoneselect1" style="color: yellow" type="checkbox" disabled checked>
+                                        <div class="zonereponse">
+                                            <input class="zoneselect1" style="color: yellow" type="checkbox" disabled checked>
+                                            <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
+                                        </div>
                                     <?php
                                 }else{
                                     ?>
-                                        <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
-                                        <input class="zoneselect1" type="checkbox" disabled>
+                                        <div class="zonereponse">
+                                            <input class="zoneselect1" type="checkbox" disabled>
+                                            <input class="zonerep1" type="text" value="<?= $key ?>" disabled>
+                                        </div>
                                     <?php
                                 }
                             }
                         }
                     }
                 }
-            }
-        ?>
+            ?>
     </div>
         <div class="pages">
         <?php
@@ -111,5 +133,7 @@
                 }
         ?>
         </div>
-
 </div>
+<script src="./public/js/validation.js">
+
+</script>
