@@ -142,3 +142,32 @@ function validation_donnees($login,$pwd,$confirm_pwd,$prenom,$nom,$profil,$image
         file_put_contents($lien_file_json,$finally_array);
     }
   }
+
+// Fonction qui permet de mélanger un tableau
+
+  function shuffle_extra ($array) {
+    // vérifie si c'est un tableau
+    if (!is_array($array)) { 
+        return array(); 
+    } 
+
+    // mélange les clés du tableau
+    shuffle($array);
+
+    // retourne le résultat
+    return $array;
+  }
+
+  // Fonction permettant de faire te tri d'un tableau
+
+  function getRandomStr ($nbr,$tab) {
+    shuffle($tab);
+  $chaine=[];
+  for ($i=0;$i<$nbr;$i++){
+
+      $chaine[]= $tab[$i];
+  }
+
+   return $chaine;
+
+}
