@@ -836,6 +836,7 @@ input {
     width: 80%;
     height: 95%;
     margin-left: 1%;
+    background: transparent;
     color: #45b4d6;
 }
 .champsrep {
@@ -847,14 +848,13 @@ input {
     float: left;
     width: 80%;
     height: 10%;
-    margin-top: 1.5%;
+    margin-top: 1%;
     margin-left: 10%;
 }
 .previouss {
     float: left;
     width: 15%;
-    height: 60%;
-    padding: 1% 1%;
+    height: 100%;
     box-shadow: 3px 3px #e6e6e6;
     text-align: center;
     text-decoration: none;
@@ -865,8 +865,7 @@ input {
 .nextt {
     float: right;
     width: 15%;
-    height: 60%;
-    padding: 1% 1%;
+    height: 100%;
     text-align: center;
     box-shadow: 3px 3px #e6e6e6;
     text-decoration: none;
