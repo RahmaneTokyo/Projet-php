@@ -23,7 +23,6 @@
         header("Location:index.php?lien=jeux&block=topscore&page=$next");
         }
         echo 'Jeu Terminé <br>';
-        print_r($_SESSION['result']);
     }
     if (isset($_POST['pre'])){
         $index= $_SESSION['page'];
