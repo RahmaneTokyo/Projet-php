@@ -1,8 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-image: url(../image/quizz1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 750px;
+    display: flex;
+    height: 100vh;
+    padding: 0;
 }
 
 /* Partie Connexion */
@@ -40,11 +47,69 @@ body {
     color: #A44545;
     text-decoration: underline;
 }
-.zone-connect {
-    height: 100%;
+
+.zone-connexion .zone-form {
 }
-.zone-connect  form {
-    background: purple;
-    width: 100%;
-    height: 60%;
+.zone-connexion .zone-form .form {
+    padding-left: 30px;
+}
+.zone-connexion .zone-form .form .form-control {
+    position: relative;
+    background: transparent;
+    border: 0;
+    width: 420px;
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+}
+.zone-connexion .zone-form .form .form-control .iconify {
+    width: 15%;
+    height: 45px;
+}
+.zone-connexion .zone-form .form .form-control input {
+    border-radius: 40px;
+    height: 40px;
+    width: 80%;
+    border: 3px solid #E9E9E9;
+    background: #E9E9E9;
+    box-shadow: 6px 7px 4px #000000;
+    padding-left: 15px;
+    color: #6C6C70;
+    font-family: Kurale;
+}
+.zone-connexion .zone-form .form .form-control input:focus {
+    border-color: #E9E9E9;
+}
+.zone-connexion .zone-form .form .form-control.success input{
+    border-color: #2ecc71;
+}
+.zone-connexion .zone-form .form .form-control.error input{
+    border-color: #e74c3c;
+}
+.zone-connexion .zone-form .form .form-control small {
+    padding-top: 10px;
+    padding-left: 80px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    top: 50px;
+    display: block;
+    color: #e74c3c;
+    visibility: hidden;
+}
+.zone-connexion .zone-form .form .form-control.error small {
+    visibility: visible;
+}
+.zone-connexion .zone-form .form button {
+    cursor: pointer;
+    margin-left: 30%;
+    margin-top: 30px;
+    border: 0;
+    font-family: Kurale;
+    color: #ffffff;
+    font-size: 20px;
+    background: #A44545;
+    border-radius: 30px 0px;
+    width: 40%;
+    height: 60px;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
 }
