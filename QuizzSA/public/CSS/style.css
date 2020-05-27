@@ -1,0 +1,50 @@
+body {
+    background-image: url(../image/quizz1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+
+/* Partie Connexion */
+
+.zone-connexion {
+    width: 75%;
+    height: 75%;
+    background: rgba(196, 196, 196, 0.8);
+    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 30px 0px 30px 0px;
+}
+.zone-texte {
+    width: 50%;
+    height: 100%;
+}
+.zone-texte .le_plaisir_de_jouer {
+    margin-bottom: 25%;
+    text-align: center;
+    font-family: Kurale;
+    font-size: 50px;
+}
+.zone-texte .bienvenu {
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: Oswald;
+    font-size: 25px;
+}
+.zone-texte .inscription {
+    font-family: Oswald;
+    text-align: center;
+    font-size: 25px;
+}
+.zone-texte .inscription a {
+    font-family: Kurale;
+    color: #A44545;
+    text-decoration: underline;
+}
+.zone-connect {
+    height: 100%;
+}
+.zone-connect  form {
+    background: purple;
+    width: 100%;
+    height: 60%;
+}
