@@ -51,12 +51,14 @@ body {
 .zone-connexion .zone-form {
 }
 .zone-connexion .zone-form .form {
-    padding-left: 30px;
+    float: left;
+    min-height: 200px;
+    margin-left: 30px;
 }
 .zone-connexion .zone-form .form .form-control {
     position: relative;
-    background: transparent;
     border: 0;
+    background: transparent;
     width: 420px;
     margin-bottom: 30px;
     padding-bottom: 50px;
@@ -99,10 +101,10 @@ body {
 .zone-connexion .zone-form .form .form-control.error small {
     visibility: visible;
 }
-.zone-connexion .zone-form .form button {
+.zone-connexion .zone-form .form .connect {
     cursor: pointer;
     margin-left: 30%;
-    margin-top: 30px;
+    margin-top: 10px;
     border: 0;
     font-family: Kurale;
     color: #ffffff;
@@ -112,4 +114,94 @@ body {
     width: 40%;
     height: 60px;
     box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Partie inscription */
+
+.avatar {
+    width: 30%;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 29%;
+    border: 3px solid #A44545;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.form-inscription {
+    width: 100%;
+}
+.form-controller {
+    position: relative;
+    border: 0;
+    height: 60px;
+    width: 450px;
+    margin-left: 25px;
+}
+.form-controller input {
+    border-radius: 40px;
+    height: 30px;
+    width: 80%;
+    border: 3px solid #E9E9E9;
+    background: #E9E9E9;
+    box-shadow: 6px 7px 4px #000000;
+    padding-left: 15px;
+    color: #6C6C70;
+    font-family: Kurale;
+}
+.form-controller input:focus {
+    border-color: #E9E9E9;
+}
+.form-controller.error input{
+    border-color: #e74c3c;
+}
+.form-controller small {
+    display: block;
+    position: absolute;
+    padding: 10px;
+    top: 28px;
+    bottom: 0px;
+    color: #e74c3c;
+    visibility: hidden;
+}
+.form-controller.error small {
+    visibility: visible;
+}
+.creer {
+    width: 100%;
+    height: 70px;
+}
+.fichier {
+    float: left;
+    width: 150px;
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 2%;
+    background: #A44545;
+    border-radius: 20px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.label-file {
+    float: left;
+    width: 98%;
+    padding-top: 8px;
+    padding-left: 11px;
+    height: 100%;
+    font-size: 17px;
+    color: #ffffff;
+}
+.choisir {
+    display: none;
+}
+.creer button {
+    float: right;
+    width: 150px;
+    height: 40px;
+    margin-right: 90px;
+    margin-top: 2%;
+    border: 0;
+    color: #ffffff;
+    font-size: 17px;
+    border-radius: 20px 0px;
+    background: #A44545;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
 }
