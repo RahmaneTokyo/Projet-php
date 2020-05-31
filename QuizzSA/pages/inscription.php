@@ -1,8 +1,14 @@
 <?php
-    /* if (isset($_POST['submit'])) {
+
+    $host = "mysql-tokyosan.alwaysdata.net";
+    $username ="tokyosan";
+    $password = "rahmane961";
+    $database = "tokyosan_quizzsa";
+
+    if (isset($_POST['submit'])) {
         // Ouverture d'une connexion à la base de données QuizzSA
 
-        $objetPDO = new PDO ('mysql:host=localhost;dbname=quizzsa','root','');
+        $objetPDO = new PDO ("mysql:host=$host; dbname=$database", $username, $password);
 
         // Requete d'insertion
 
@@ -22,42 +28,40 @@
 
         if ($insert) {
             $message = 'Inscription du joueur réussi';
+            header("location: index.php");
         }else {
             $message = 'Echec réessayez';
         }
     }
     
-    var_dump($_POST); */
     ?>
 
 <div class="row zone-connexion">
-    <div class="col-xs-12 col-sm-12 col-md-6 zone-texte">
-        <div class="container le_plaisir_de_jouer"> Le Plaisir de Jouer </div>
-        <div class="container bienvenu"> Bienvenue sur la plateforme de quizz<br>SA. Veuillez vous connecter pour jouer </div>
-        <div class="container inscription"> Si vous possedez deja un compte <br> <a href="index.php"> Connectez-vous </a> </div>
+    <div class="container-fluid col-md-6 zone-texte">
+        <div class="le_plaisir_de_jouer"> Le Plaisir de Jouer </div>
+        <div class="bienvenu"> Bienvenue sur la plateforme d'inscription.<br>Creez un compte pour jouer </div>
+        <div class="pt-2 inscription"> Si vous possedez déjà un compte<br> <a href="index.php"> Connectez-vous </a> </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 zone-form">
-        <div class="container">
-            <img id="output" class="avatar">
-        </div>
-        <form class="form" id="form" method="post">
-            <div class="form-group formerr">
+    <div class="container col-xs-12 col-sm-12 col-md-6 zone-form">
+        <img id="output" class="avatar">
+        <form class="container form" id="form" method="post">
+            <div class="form-group form-controller">
                 <input type="text" name="firstname" id="firstname" placeholder="First Name">
                 <small id="firstname_error"></small>
             </div>
-            <div class="form-group">
+            <div class="form-group form-controller">
                 <input type="text" name="lastname" id="lastname" placeholder="Last Name">
                 <small id="lastname_error"></small>
             </div>
-            <div class="form-group">
+            <div class="form-group form-controller">
                 <input type="text" name="login" id="login" placeholder="Login">
                 <small id="login_error"></small>
             </div>
-            <div class="form-group">
+            <div class="form-group form-controller">
                 <input type="password" name="pwd" id="pwd" placeholder="Password">
                 <small id="pwd_error"></small>
             </div>
-            <div class="form-group">
+            <div class="form-group form-controller">
                 <input type="password" name="confirm" id="confirm" placeholder="Confirm Password">
                 <small id="confirm_error"></small>
             </div>
@@ -66,11 +70,21 @@
                     <label for="file" class="label-file">Choisir un fichier</label>
                     <input id="file" class="choisir" type="file" name="image" accept="image/*" onchange="loadFile(event)">
                 </div>
-                <button type="submit" name="submit">Creer compte</button>
+                <button name="submit">Creer compte</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src)
+        }
+    }
+</script>
 
 <script>
 
@@ -160,6 +174,26 @@
     });
     $("#confirm").focusout(function() {
         check_confirm();
+    });
+    $("#form").submit(function() {
+
+        error_firstname = false;
+        error_lastname = false;
+        error_login = false;
+        error_pwd = false;
+        error_confirm = false;
+
+        check_firstname();
+        check_lastname();
+        check_login();
+        check_pwd();
+        check_confirm();
+
+        if(error_firstname == false && error_lastname == false && error_login == false && error_pwd == false && error_confirm == false) {
+            return true;
+        }else {
+            return false;
+        }
     });
 
 </script>

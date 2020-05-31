@@ -4,7 +4,6 @@
         header("Location: index.php");
         exit;
     }
-
 ?>
 <div class="container zone-connexion">
     <div class="row">
