@@ -1,22 +1,23 @@
 <?php
 
-    $host = "mysql-tokyosan.alwaysdata.net";
+    require_once('./data/connexiondb.php');
+    /* $host = "mysql-tokyosan.alwaysdata.net";
     $username ="tokyosan";
     $password = "rahmane961";
     $database = "tokyosan_quizzsa";
-    $message  = "";
+    $message  = ""; */
 
     try {
 
-        $connect = new PDO("mysql:host=$host; dbname=$database",$username,$password);
-        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        /* $connect = new PDO("mysql:host=$host; dbname=$database",$username,$password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); */
 
         if(isset($_POST["submit"])) {
 
             if(!empty($_POST["login"]) && !empty($_POST["pwd"])) {
 
                 $query = "SELECT * FROM utilisateur WHERE login = :login AND pwd = :pwd";
-                $statement = $connect->prepare($query);
+                $statement = $pdo->prepare($query);
 
                 $statement->execute(
 
@@ -38,9 +39,10 @@
                 if($count > 0) {
 
                     $_SESSION["login"] = $_POST["login"];
-                    $_SESSION["firstname"] = $result["firstname"];
-                    $_SESSION["lastname"] = $result["lastname"];
+                    $_SESSION["firstname"] = $result["prenom"];
+                    $_SESSION["lastname"] = $result["nom"];
                     $_SESSION["profil"] = $result["profil"];
+                    $_SESSION["image"] = $result["image"];
 
                 }
                 else {
@@ -66,11 +68,6 @@
         <div class="bienvenu"> Bienvenue sur la plateforme de quizz<br>SA. Veuillez vous connecter pour jouer </div>
         <div class="pt-2 inscription"> Pas de compte ? <a href="index.php?lien=inscription"> Inscrivez-vous </a> </div>
     </div>
-    <!-- <div class="container-fluid col-md-6 zone-texte">
-        <div class="container le_plaisir_de_jouer"> Le Plaisir de Jouer </div>
-        <div class="container-fluid bienvenu"> Bienvenue sur la plateforme de quizz<br>SA. Veuillez vous connecter pour jouer </div>
-        <div class="container inscription"> Pas de compte ? <a href="index.php?lien=inscription"> Inscrivez-vous </a> </div>
-    </div> -->
     <div class="container-fluid col-md-6 d-flex align-items-center zone-form">
         <form class="container form" id="form" method="post">
             <div class="container">
@@ -95,62 +92,4 @@
     </div>
 </div>
 
-<script>
-
-    // Hiding error message
-
-    $("#login_error").hide();
-    $("#pwd_error").hide();
-
-    var error_login = false;
-    var error_pwd = false;
-
-    // Functions
-
-    function check_login() {
-        var login_length = $("#login").val().length;
-        if(login_length < 1) {
-            $("#login_error").html("This field is required!");
-            $("#login_error").show();
-            error_login = true;
-        }else {
-            $("#login_error").hide();
-        }
-    }
-
-    function check_pwd() {
-        var pwd_length = $("#pwd").val().length;
-        if(pwd_length < 1) {
-            $("#pwd_error").html("This field is required!");
-            $("#pwd_error").show();
-            error_pwd = true;
-        }else {
-            $("#pwd_error").hide();
-        }
-    }
-
-    // Events
-
-    $("#login").focusout(function() {
-        check_login();
-    });
-
-    $("#pwd").focusout(function() {
-        check_pwd();
-    });
-
-    $("#form").submit(function() {
-        error_login = false;
-        error_pwd = false;
-
-        check_login();
-        check_pwd();
-
-        if(error_login == false && error_pwd == false) {
-            return true;
-        }else {
-            return false;
-        }
-    });
-
-</script>
+<script src="./traitement/validation.js"></script>

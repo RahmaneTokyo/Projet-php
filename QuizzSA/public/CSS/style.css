@@ -4,6 +4,7 @@
     --rouge-sombre: #A44545;
     --blanc: #ffffff;
     --gris-transparent: rgba(196, 196, 196, 0.8);
+    --noir: #000000;
 }
 
 * {
@@ -34,6 +35,12 @@ body {
     width: 100%;
     height: 10%;
     font-size: 30px;
+}
+.erreur {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: var(--error);
 }
 .le_plaisir_de_jouer {
     height: 150px;
@@ -123,7 +130,7 @@ body {
 
 .avatar {
     width: 35%;
-    height: 150px;
+    height: 130px;
     border-radius: 50%;
     margin-left: 30%;
     border: 3px solid var(--rouge-sombre);
@@ -203,225 +210,491 @@ body {
     box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
 }
 
-@media screen and (max-width: 680px) {
-
-    /* Partie Connexion */
-
-.zone-connexion {
-    width: 75%;
-    min-height: 75%;
-    background: var(--gris-transparent);
-    box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.7);
-    border-radius: 30px 0px 30px 0px;
-    justify-content: center;
-}
-.zone-texte {
-    width: 100%;
-}
-.le_plaisir_de_jouer {
-    height: 70px;
-    text-align: center;
-    font-size: 29px;
-    font-weight: bold;
-}
-.bienvenu {
-    height: 70px;
-    font-size: 17px;
-    text-align: center;
-    font-family: Oswald;
-}
-.inscription {
-    font-family: Oswald;
-    text-align: center;
-    font-size: 19px;
-}
-.inscription a {
-    font-family: Kurale;
-    color: var(--rouge-sombre);
-    text-decoration: underline;
-}
-.zone-connexion .zone-form {
-    width: 100%;
-}
-.zone-connexion .zone-form .form {
-    margin-top: 2px;
-    min-height: 100px;
-    margin-bottom: 20px
-}
-.form-control {
-    position: relative;
-    border: 0;
-    margin-bottom: 10px;
-    padding-bottom: 50px;
-}
-.form-control .iconify {
-    width: 15%;
-    height: 30px;
-}
-.zone-connexion .zone-form .form .form-control input {
-    border-radius: 40px;
-    height: 30px;
-    width: 80%;
-    border: 3px solid #E9E9E9;
-    background: #E9E9E9;
-    box-shadow: 6px 7px 4px #000000;
-    padding-left: 15px;
-    color: #6C6C70;
-}
-.zone-connexion .zone-form .form .form-control input:focus {
-    border-color: #E9E9E9;
-}
-.zone-connexion .zone-form .form .form-control.success input{
-    border-color: var(--success);
-}
-.zone-connexion .zone-form .form .form-control.error input{
-    border-color: var(--error);
-}
-.zone-connexion .zone-form .form .form-control small {
-    position: absolute;
-    padding: 0px;
-    margin-left: 20%;
-    height: 10px;
-    bottom: 0;
-    display: block;
-    color: var(--error);
-}
-.connect {
-    cursor: pointer;
-    margin-left: 30%;
-    margin-top: 8px;
-    border: 0;
-    color: var(--blanc);
-    font-size: 14px;
-    line-height: 13px;
-    background: var(--rouge-sombre);
-    border-radius: 10px 0px;
-    width: 45%;
-    height: 35px;
-    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Partie inscription */
-
-.avatar {
-    width: 40%;
-    height: 100px;
-    border-radius: 50%;
-    margin-left: 30%;
-    border: 3px solid var(--rouge-sombre);
-    margin-bottom: 2%;
-    margin-top: 2%;
-}
-.form-group {
-    width: 100%;
-}
-.form-controller {
-    margin-left: 5%;
-    width: 90%;
-    height: 40px;
-    margin-bottom: 5px;
-}
-.form-controller input {
-    border-radius: 40px;
-    height: 20px;
-    font-size: 10px;
-    width: 100%;
-    border: 3px solid #E9E9E9;
-    background: #E9E9E9;
-    box-shadow: 6px 7px 4px #000000;
-    padding-left: 15px;
-    color: #6C6C70;
-}
-.form-controller input:focus {
-    border-color: #E9E9E9;
-}
-.form-controller.error input{
-    border-color: var(--error);
-}
-.form-controller small {
-    display: block;
-    height: 25px;
-    font-size: 10px;
-    position: relative;
-    padding-left: 10px;
-    padding-top: 5px;
-    color: var(--error);
-}
-.creer {
-    width: 100%;
-    height: 50px;
-}
-.fichier {
-    float: left;
-    width: 40%;
-    height: 30px;
-    margin-left: 5%;
-    background: var(--rouge-sombre);
-    border-radius: 10px 0px;
-    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
-}
-.label-file {
-    cursor: pointer;
-    float: left;
-    width: 98%;
-    height: 100%;
-    line-height: 13px;
-    padding-top: 8px;
-    text-align: center;
-    font-size: 12px;
-    color: #ffffff;
-}
-.choisir {
-    display: none;
-}.creer button {
-    float: right;
-    width: 35%;
-    height: 30px;
-    margin-right: 5%;
-    border: 0;
-    color: #ffffff;
-    font-size: 12px;
-    line-height: 13px;
-    border-radius: 10px 0px;
-    background: var(--rouge-sombre);
-    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
-}
-
-}
-
 /* Partie admin */
 
+.zone-onglet {
+    width: 15%;
+    min-height: 100px;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
 .zone-onglet .onglet {
     width: 100%;
-    height: 40px;
-    background: yellow;
+    height: 60px;
+    margin-bottom: 15%;
+}
+.zone-onglet .onglet a {
+    width: 100%;
+    height: 100%;
+    color: var(--rouge-sombre);
+    text-decoration: none;
+    font-size: 20px;
+    background: var(--gris-transparent);
+    border-radius: 20px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.zone-onglet .onglet a:hover {
+    background: var(--rouge-sombre);
+    color: var(--blanc);
 }
 .zone-creer {
-    background: red;
     text-align: center;
     font-weight: bold;
     font-size: 35px;
     width: 100%;
+    height: 100%;
+}
+.zone-entete {
+    font-size: 45px;
+    line-height: 55px;
+    font-weight: bold;
+}
+.zone-user {
+    width: 100%;
 }
 .zone-avatar {
-    width: 50%;
-    height: 50%;
-    background: maroon;
+    width: 45%;
+    margin-left: 27%;
+    height: 170px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border-radius: 50%;
 }
-.zone-onglet {
-    background: green;
-    width: 15%;
-    min-height: 100px;
-    position: absolute;
-    top: 25%;
-    left: 5%;
+.zone-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.zone-prenom {
+    font-size: 35px;
+    height: 20%;
+    margin-bottom: 5px;
 }
 .zone-deco {
-    width: 50%;
-    height: 50%;
-    background: purple;
+    width: 45%;
+    height: 70px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
-.zone-admin {
-    background: yellow;
+.zone-deco a {
     width: 100%;
+    height: 100%;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--blanc);
+    background: var(--rouge-sombre);
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 20px 0px;
+}
+
+/* Partie Liste Questions */
+
+.zone-tete {
+    width: 100%;
+    height: 10%;
+    border: 2px solid var(--rouge-sombre);
+    box-shadow: 6px 7px 4px #000000;
+    border-radius: 30px 0px;
+    background: var(--gris-transparent);
+    font-size: 25px;
+}
+.nbre {
+    width: 25%;
+    text-align: center;
+    border: 2px solid var(--rouge-sombre);
+}
+.texte {
+    width: 680px;
+}
+.ok {
+    width: 30%;
+    height: 45px;
+    background: var(--rouge-sombre);
+    border: 2px solid var(--noir);
+}
+
+/* Liste joueurs */
+
+#scrollzone{
+    max-height: 400px;
+    overflow: scroll;
+}
+
+/* Liste admins */
+
+#scrollZone{
+    max-height: 200px;
+    overflow: scroll;
+    background: blue;
+}
+
+/* Partie Joueur */
+
+.zone-joueur {
+    width: 100%;
+}
+.joueur {
+    width: 100%;
+}
+.image-joueur {
+    float: left;
+    width: 50%;
+    height: 145px;
+    border-radius: 50%;
+    margin-top: 2%;
+    margin-bottom: 20%;
+}
+.image-joueur img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.zone-nom {
+    width: 40%;
+    margin-top: 7%;
+    float: right;
+    margin-right: 10%;
+    font-size: 27px;
+}
+.zone-jeu-texte {
+    text-align: center;
+    font-family: Oswald;
+    font-size: 25px;
+}
+.zone-deconnexion {
+    position: absolute;
+    width: 20%;
+    height: 70px;
+    margin-top: 30%;
+    margin-left: 2%;
+
+}
+.zone-deconnexion a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--blanc);
+    background: var(--rouge-sombre);
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 20px 0px;
+}
+
+@media screen and (max-width: 680px) {
+
+    /* Partie Connexion */
+
+    .zone-connexion {
+        width: 75%;
+        min-height: 75%;
+        background: var(--gris-transparent);
+        box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.7);
+        border-radius: 30px 0px 30px 0px;
+        justify-content: center;
+    }
+    .zone-texte {
+        width: 100%;
+    }
+    .erreur {
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+        color: var(--error);
+    }
+    .le_plaisir_de_jouer {
+        height: 70px;
+        text-align: center;
+        font-size: 29px;
+        font-weight: bold;
+    }
+    .bienvenu {
+        height: 70px;
+        font-size: 17px;
+        text-align: center;
+        font-family: Oswald;
+    }
+    .inscription {
+        font-family: Oswald;
+        text-align: center;
+        font-size: 19px;
+    }
+    .inscription a {
+        font-family: Kurale;
+        color: var(--rouge-sombre);
+        text-decoration: underline;
+    }
+    .zone-connexion .zone-form {
+        width: 100%;
+    }
+    .zone-connexion .zone-form .form {
+        margin-top: 2px;
+        min-height: 100px;
+        margin-bottom: 20px
+    }
+    .form-control {
+        position: relative;
+        border: 0;
+        margin-bottom: 10px;
+        padding-bottom: 50px;
+    }
+    .form-control .iconify {
+        width: 15%;
+        height: 30px;
+    }
+    .zone-connexion .zone-form .form .form-control input {
+        border-radius: 40px;
+        height: 30px;
+        width: 80%;
+        border: 3px solid #E9E9E9;
+        background: #E9E9E9;
+        box-shadow: 6px 7px 4px #000000;
+        padding-left: 15px;
+        color: #6C6C70;
+    }
+    .zone-connexion .zone-form .form .form-control input:focus {
+        border-color: #E9E9E9;
+    }
+    .zone-connexion .zone-form .form .form-control.success input{
+        border-color: var(--success);
+    }
+    .zone-connexion .zone-form .form .form-control.error input{
+        border-color: var(--error);
+    }
+    .zone-connexion .zone-form .form .form-control small {
+        position: absolute;
+        padding: 0px;
+        margin-left: 20%;
+        height: 10px;
+        bottom: 0;
+        display: block;
+        color: var(--error);
+    }
+    .connect {
+        cursor: pointer;
+        margin-left: 30%;
+        margin-top: 8px;
+        border: 0;
+        color: var(--blanc);
+        font-size: 14px;
+        line-height: 13px;
+        background: var(--rouge-sombre);
+        border-radius: 10px 0px;
+        width: 45%;
+        height: 35px;
+        box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Partie inscription */
+
+    .zone-form {
+    }
+    .avatar {
+        width: 30%;
+        height: 70px;
+        border-radius: 50%;
+        margin-left: 35%;
+        border: 3px solid var(--rouge-sombre);
+        margin-bottom: 2%;
+        margin-top: 2%;
+    }
+    .form-group {
+        width: 100%;
+    }
+    .form-controller {
+        margin-left: 5%;
+        width: 90%;
+        height: 30px;
+        margin-bottom: 7px;
+    }
+    .form-controller input {
+        border-radius: 40px;
+        height: 20px;
+        font-size: 10px;
+        width: 100%;
+        border: 3px solid #E9E9E9;
+        background: #E9E9E9;
+        box-shadow: 6px 7px 4px #000000;
+        padding-left: 15px;
+        color: #6C6C70;
+    }
+    .form-controller input:focus {
+        border-color: #E9E9E9;
+    }
+    .form-controller.error input{
+        border-color: var(--error);
+    }
+    .form-controller small {
+        display: block;
+        height: 25px;
+        font-size: 10px;
+        position: relative;
+        padding-left: 10px;
+        padding-top: 5px;
+        color: var(--error);
+    }
+    .creer {
+        width: 100%;
+        height: 50px;
+    }
+    .fichier {
+        float: left;
+        width: 40%;
+        height: 30px;
+        margin-left: 5%;
+        background: var(--rouge-sombre);
+        border-radius: 10px 0px;
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+    }
+    .label-file {
+        cursor: pointer;
+        float: left;
+        width: 98%;
+        height: 100%;
+        line-height: 13px;
+        padding-top: 8px;
+        text-align: center;
+        font-size: 12px;
+        color: #ffffff;
+    }
+    .choisir {
+        display: none;
+    }.creer button {
+        float: right;
+        width: 35%;
+        height: 30px;
+        margin-right: 5%;
+        border: 0;
+        color: #ffffff;
+        font-size: 12px;
+        line-height: 13px;
+        border-radius: 10px 0px;
+        background: var(--rouge-sombre);
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Partie admin */
+
+    .zone-onglet {
+        width: 20%;
+        min-height: 100px;
+        position: absolute;
+        top: 7%;
+        left: 5%;
+    }
+    .zone-onglet .onglet {
+        width: 100%;
+        height: 30px;
+    }
+    .zone-onglet .onglet a {
+        width: 100%;
+        height: 100%;
+        color: var(--rouge-sombre);
+        text-decoration: none;
+        font-size: 13px;
+        background: var(--gris-transparent);
+        border-radius: 10px 0px;
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+    }
+    .zone-onglet .onglet a:hover {
+        background: var(--rouge-sombre);
+        color: var(--blanc);
+    }
+    .zone-creer {
+        font-weight: bold;
+        width: 100%;
+        height: 100%;
+    }
+    .zone-entete {
+        font-size: 19px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .zone-user {
+        width: 100%;
+    }
+    .zone-avatar {
+        width: 45%;
+        margin-left: 29%;
+        height: 90px;
+        border-radius: 50%;
+    }
+    .zone-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    .zone-prenom {
+        font-size: 15px;
+    }
+    .zone-deco {
+        width: 35%;
+        height: 30px;
+        margin-top: 1%;
+    }
+    .zone-deco a {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-size: 11px;
+        color: var(--blanc);
+        background: var(--rouge-sombre);
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+        border-radius: 10px 0px;
+    }
+    .zone-interface {
+        width: 100%;
+    }
+
+    /* Partie Joueur */
+
+    .zone-joueur {
+        width: 100%;
+    }
+    .joueur {
+        width: 100%;
+    }
+    .image-joueur {
+        float: left;
+        width: 35%;
+        height: 70px;
+        margin-top: 2%;
+        border-radius: 50%;
+        margin-bottom: 1%;
+    }
+    .image-joueur img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    .zone-nom {
+        width: 30%;
+        float: right;
+        font-size: 18px;
+        margin-top: 2%;
+        margin-right: 35%;
+    }
+    .zone-jeu-texte {
+        text-align: center;
+        font-family: Oswald;
+        font-size: 15px;
+    }
+    .zone-deconnexion {
+        position: absolute;
+        width: 27%;
+        height: 40px;
+        margin-top: 4%;
+        margin-left: 48%;
+    }
+    .zone-deconnexion a {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        font-size: 15px;
+        color: var(--blanc);
+        background: var(--rouge-sombre);
+        box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+        border-radius: 20px 0px;
+    }
+
 }
