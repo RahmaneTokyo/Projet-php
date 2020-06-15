@@ -374,13 +374,92 @@ body {
     font-size: 8px;
 }
 
-/* Liste admins */
+/* Creer question */
 
-#scrollZone{
-
-    max-height: 200px;
-    overflow: scroll;
-    background: blue;
+.text-question {
+    color: var(--rouge-sombre);
+    font-size: 25px;
+}
+.champ-question {
+    width: 100%;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.zone-point {
+    width: 100%;
+}
+.text-point {
+    padding-left: 5%;
+    font-size: 20px;
+    color: var(--rouge-sombre);
+}
+.champ-point {
+    width: 25%;
+    height: 40px;
+    margin-top: 3%;
+    color: var(--rouge-sombre);
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.type-reponse {
+    width: 100%;
+    height: 90px;
+}
+.text-type {
+    float: left;
+    height: 50%;
+    font-size: 20px;
+    color: var(--rouge-sombre);
+    margin-top: 3%;
+    padding-left: 5%;
+}
+.champ-type {
+    float: left;
+    width: 100%;
+    height: 60px;
+    color: var(--rouge-sombre);
+    margin-top: 4%;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.btn-select {
+    width: 40px;
+    height: 80%;
+    float: right;
+}
+.zone-reponse {
+    max-height: 120px;
+    overflow: auto;
+}
+.champ-reponse {
+    float: left;
+    width: 60%;
+    margin-left: 10%;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+}
+.check {
+    width: 10%;
+    margin-top: 2%;
+    float: left;
+    border: 3px solid var(--rouge-sombre);
+}
+.text-delete {
+    float: left;
+    color: var(--rouge-sombre);
+    margin-left: 3%;
+    text-decoration: none;
+}
+.btn-enregistrer {
+    background: var(--rouge-sombre);
+    height: 50px;
+    color: var(--blanc);
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Partie Joueur */
@@ -819,6 +898,115 @@ body {
     padding: 0px;
     width: 100%;
     font-size: 10px;
+}
+
+/* Creer question */
+
+.zone-question {
+    float: left;
+    width: 300px;
+}
+.text-question {
+    position: absolute;
+    width: 30%;
+    margin-top: 20%;
+    color: var(--rouge-sombre);
+    font-size: 15px;
+}
+.champ-question {
+    float: right;
+    width: 70%;
+    height: 10px;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.zone-point {
+    float: left;
+    width: 300px;
+}
+.text-point {
+    position: absolute;
+    width: 50%;
+    float: left;
+    padding: 3.5%;
+    font-size: 17px;
+    color: var(--rouge-sombre);
+}
+.champ-point {
+    float: left;
+    width: 25%;
+    height: 25px;
+    margin-left: 40%;
+    color: var(--rouge-sombre);
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.type-reponse {
+    float: left;
+    width: 100%;
+    height: 50px;
+}
+.text-type {
+    position: absolute;
+    height: 20%;
+    font-size: 12px;
+    color: var(--rouge-sombre);
+    margin-top: 4%;
+    margin-left: -3%;
+    padding-left: 2%;
+}
+.champ-type {
+    margin-left: 33%;
+    float: left;
+    width: 70%;
+    height: 30px;
+    font-size: 10px;
+    color: var(--rouge-sombre);
+    margin-top: 4%;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
+}
+.btn-select {
+    position: absolute;
+    margin-left: 90%;
+    margin-top: -17%;
+    width: 40px;
+    height: 80%;
+}
+.zone-reponse {
+    max-height: 120px;
+    overflow: auto;
+    background: red;
+}
+.champ-reponse {
+    float: left;
+    width: 60%;
+    margin-left: 10%;
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+}
+.check {
+    width: 10%;
+    margin-top: 2%;
+    float: left;
+    border: 3px solid var(--rouge-sombre);
+}
+.text-delete {
+    float: left;
+    color: var(--rouge-sombre);
+    margin-left: 3%;
+    text-decoration: none;
+}
+.btn-enregistrer {
+    background: var(--rouge-sombre);
+    height: 50px;
+    color: var(--blanc);
+    border: 3px solid var(--rouge-sombre);
+    border-radius: 10px 0px;
+    box-shadow: 6px 8px 4px rgba(0, 0, 0, 0.7);
 }
 
     /* Partie Joueur */
