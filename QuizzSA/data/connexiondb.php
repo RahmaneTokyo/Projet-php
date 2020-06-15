@@ -5,6 +5,11 @@
     $password = "rahmane961";
     $database = "tokyosan_quizzsa";
 
+    /* $host = "localhost";
+    $username ="root";
+    $password = "";
+    $database = "quizzsa"; */
+
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8mb4", $username, $password);
         $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);

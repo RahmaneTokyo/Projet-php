@@ -1,17 +1,11 @@
+<div class="container d-flex align-items-center justify-content-center entete-joueur"> Liste des admins</div>
 <div id="scrollzone" class="col">
-    <table class="table table-bordered text-center">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col">Score</th>
-            <th scope="col">login</th>
-            <th scope="col"colspan="2">Actions</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-
-        </tbody>
+    <table style="border:0px;" class="table table-bordered text-center">
+        <div class=" menu-entete" scope="col">Prenom</div>
+            <div class=" menu-entete" scope="col">Nom</div>
+            <div style="display:none;" class="pl-1 menu-score" scope="col">Score</div>
+            <div class="text-left menu-action" scope="col" colspan="2">Actions</div>
+        <tbody id="tbody"></tbody>
     </table>
 </div>
 
@@ -25,12 +19,12 @@
             type: 'post',
             dataType: 'json',
             data:{
-                limit: 2,
+                limit: 7,
                 offset: offset
             },
             success: function (data) {
                 showData(data, tbody);
-                offset+=2;
+                offset+=7;
             }
         });
 
@@ -38,13 +32,13 @@
 
         function showData(data, tbody) {
             $.each(data, (indice, utilisateur)=> {
-                tbody.append(`<tr>
-                    <td>${utilisateur.prenom}</td>
-                    <td>${utilisateur.nom}</td>
-                    <td>${utilisateur.score}</td>
-                    <td style="display:none;">${utilisateur.login}</td>
-                    <td><button type="button" class="btn btn-outline-primary"id="mdf" data-toggle="modal" data-target="#myModal">Modify</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" id="dlt">Delete</button></td>
+                tbody.append(`<tr style="border:0px;">
+                    <th class=" liste-joueur" style="border:0px;">${utilisateur.prenom}</th>
+                    <th class=" liste-joueur" style="border:0px;">${utilisateur.nom}</th>
+                    <th style="display:none;" class="text-left liste-joueur" style="border:0px;">${utilisateur.score} Pts</th>
+                    <th style="display:none;">${utilisateur.login}</th>
+                    <th class="action-button" style="border:0px;"><button type="button" class="btn text-primary"id="mdf" data-toggle="modal" data-target="#myModal">Modify</button></th>
+                    <th class="action-button" style="border:0px;"><button type="button" class="btn text-danger " id="dlt">Delete</button></th>
                 </tr>`);
             })
         }
@@ -61,13 +55,13 @@
                     type:'post',
                     url:'./data/sql_liste_admins.php',
                     data:{
-                        limit: 2,
+                        limit: 7,
                         offset: offset
                     },
                     dataType: 'JSON',
                     success: function (data) {
                         showData(data, tbody);
-                        offset+=2;
+                        offset+=7;
                     }
                 });
             }
@@ -78,7 +72,7 @@
         $(document).on('click','#dlt',function () {
             if (confirm("Do you want to delete?")){ // demande une confirmation de suppression
                 $(this).parents("tr").remove(); // récupère le div parent à supprimer
-                let login= $(this).parents('tr').find('td').eq(3).html(); // supprime le td du tr parent selectionné comportant le login
+                let login= $(this).parents('tr').find('th').eq(3).html(); // supprime le td du tr parent selectionné comportant le login
                
                 $.ajax({
                     type:'post',
@@ -88,7 +82,6 @@
                         login: login
                     },
                     success:function (data) {
-                        alert(data);
                         if (data==="ok"){
                             alert('Successful deletion');
                         }

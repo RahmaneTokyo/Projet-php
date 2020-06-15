@@ -43,6 +43,7 @@
                     $_SESSION["lastname"] = $result["nom"];
                     $_SESSION["profil"] = $result["profil"];
                     $_SESSION["image"] = $result["image"];
+                    $_SESSION["score"] = $result["score"];
 
                 }
                 else {

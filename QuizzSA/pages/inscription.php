@@ -1,26 +1,3 @@
-<?php
-
-    require_once('./data/connexiondb.php');
-
-    if (isset($_POST['submit'])) {
-
-        $score= 0;
-        $target= "./public/image/".basename($_FILES['image']['name']);
-        $images= $_FILES['image']['name'];
-        move_uploaded_file($_FILES['image']['tmp_name'], $target);
-
-        $pdoStat = $pdo->prepare("INSERT INTO utilisateur (login, pwd, nom, prenom, profil, score, image) VALUES (?,?,?,?,?,?,?)");
-        $insert = $pdoStat -> execute(array($_POST['login'], $_POST['pwd'],strtoupper($_POST['lastname']), ucfirst($_POST['firstname']), 'joueur', $score, $images));
-        $result = $pdoStat->fetch(PDO::FETCH_ASSOC);
-
-        if($insert)  {
-                header("location: index.php");
-        }else {
-            $message = "Echec de l'enregistrement. Le login existe déja !";
-        }
-    }
-
-?>
 
 <div class="row zone-connexion">
     <div class="container-fluid col-md-6 zone-texte">
@@ -36,37 +13,110 @@
         </div>
     </div>
     <div class="container col-xs-12 col-sm-12 col-md-6 zone-form">
-        <img id="output" class="avatar">
-        <form class="container form" id="form" method="post" enctype="multipart/form-data">
+    <img id="output" class="avatar">
+        <small class="pl-4" id="aint"></small>
+        <form class="container form" id="form" method="post" action="./data/register_joueur.php" enctype="multipart/form-data">
             <div class="form-group form-controller">
-                <input type="text" name="firstname" id="firstname" placeholder="First Name">
-                <small id="firstname_error"></small>
+                <input type="text" name="firstname" id="firstname" class="field" placeholder="First Name">
             </div>
             <div class="form-group form-controller">
-                <input type="text" name="lastname" id="lastname" placeholder="Last Name">
-                <small id="lastname_error"></small>
+                <input type="text" name="lastname" id="lastname" class="field" placeholder="Last Name">
             </div>
             <div class="form-group form-controller">
-                <input type="text" name="login" id="login" placeholder="Login">
-                <small id="login_error"></small>
+                <input type="text" name="login" id="login" class="field" placeholder="Login">
             </div>
             <div class="form-group form-controller">
-                <input type="password" name="pwd" id="pwd" placeholder="Password">
-                <small id="pwd_error"></small>
+                <input type="password" name="pwd" id="pwd" class="field" placeholder="Password">
             </div>
             <div class="form-group form-controller">
-                <input type="password" name="confirm" id="confirm" placeholder="Confirm Password">
-                <small id="confirm_error"></small>
+                <input type="password" name="confirm" id="confirm" class="field" placeholder="Confirm Password">
             </div>
             <div class="creer">
                 <div class="fichier">
                     <label for="file" class="label-file">Choisir un fichier</label>
-                    <input type="file" id="file" class="choisir" name="image" accept="image/*" onchange="loadFile(event)">
+                    <input type="file" id="file" class="choisir" name="file" accept="image/*" onchange="loadFile(event)">
                 </div>
-                <button name="submit">Creer compte</button>
+                <button  id="submit" name="submit">Creer compte</button>
             </div>
         </form>
     </div>
 </div>
 
 <script src="./traitement/validation.js" ></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        var $firstname = $('#firstname'),
+            $lastname= $('#lastname'),
+            $login= $('#login'),
+            $pwd = $('#pwd'),
+            $confirm = $('#confirm'),
+            $file= $('#file');
+
+            $(document).on('keyup','.field',function(){ // Lorsqu'on saisit sur un input
+                if($(this).val().length < 1){ // si la chaîne de caractères est inférieure à 5
+                    $(this).css({ // on rend le champ rouge
+                        borderColor : 'red',
+                        color : 'red'
+                    });
+                }
+                else{
+                    $(this).css({ // si tout est bon, on le rend vert
+                        borderColor : 'green',
+                        color : 'green'
+                    });
+                }
+            });
+
+            $(document).on('click','#submit',function(e){
+                let arrayinput=[$firstname,$lastname,$login,$pwd,$confirm,$file];
+                arrayinput.forEach(input=>{
+                    if(input.val() === ""){ // Si le champ est vide
+                        $("#aint").html("Fill all mandatory fields an upload an image !").css({color: 'red', display:'block'}); 
+                        input.css({ // on rend le champ rouge
+                            borderColor : 'red',
+                            color : 'red'
+                        });
+                        e.preventDefault();
+                    }
+                });
+                if($confirm.val()!== $pwd.val()){
+                    $("#aint").html("password doesn't match !").css({color: 'red', display:'block'});
+                    $("#confirm, #pwd").css({ // on rend le champ rouge
+                        borderColor : 'red',
+                        color : 'red'
+                    });
+                    e.preventDefault();
+                }
+            });
+
+            $(document).on('keyup','#confirm',function(){
+                $("#aint").css("display", "none");
+            });
+
+            $(document).on('keyup','#confirm',function(){
+                $("#aint").css("display", "none");
+            });
+
+            $(document).on('click','#submit',function(){
+                let form_data= new FormData(myForm);
+                $.ajax({
+                    url:'./data/register_joueur.php',
+                    processData:false,
+                    dataType:false,
+                    contentType:false,
+                    type:'post',
+                    data: form_data,
+                    success: function (data) {
+                        if(data === "ok"){
+                            window.location.replace = "index.php";
+                        }
+                    }
+                });
+            });
+
+    });
+
+</script>

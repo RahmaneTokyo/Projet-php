@@ -13,7 +13,7 @@
                 <div class="col-md-6 zone-creer">
                     <div class="container zone-entete">Creez et Parametrer votre Quizz</div>
                     <div class="container zone-user">
-                        <div class="container zone-avatar"> <img src="./public/image/<?= $_SESSION['image'] ?>" alt="" srcset=""> </div>
+                        <div class="container zone-avatar"> <img src="./public/image/<?= $_SESSION['image']; ?>" alt="" srcset=""> </div>
                         <div class="container d-flex justify-content-center align-items-center zone-prenom"> <?= $_SESSION['firstname'] ?> </div>
                         <div class="container d-flex justify-content-center align-items-center zone-prenom"> <?= $_SESSION['lastname'] ?> </div>
                     </div>

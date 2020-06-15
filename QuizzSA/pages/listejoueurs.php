@@ -1,84 +1,3 @@
-<!-- <div id="scrollZone" class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr class="text-center">
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Score</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-            <tr class="text-center">
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-<!-- <script>
-    $(document).ready(function(){
-        
-        let offset = 0;
-        const tbody = $('#tbody');
-        
-        $.ajax({
-                type: "POST",
-                url: "http://localhost/QuizzSA/data/sql_liste_joueurs.php",
-                data: {limit:2,offset:offset},
-                dataType: "JSON",
-                success: function (data) {
-                    /* console.log(data); */
-                    tbody.html(''); // Permet de vider les 3 points définis par defaut dans le code html
-                    printData(data,tbody);
-                    offset +=7;
-                }
-            });
-
-        //  Scroll
-        const scrollZone = $('#scrollZone')
-        scrollZone.scroll(function(){
-            //console.log(scrollZone[0].clientHeight)
-            const st = scrollZone[0].scrollTop;
-            const sh = scrollZone[0].scrollHeight;
-            const ch = scrollZone[0].clientHeight;
-
-            console.log(st,sh,ch);
-            
-            if(sh-st <= ch){
-                $.ajax({
-                    type: "POST",
-                    url: "../data/sql_liste_joueurs.php",
-                    data: {limit:2,offset:offset},
-                    dataType: "JSON",
-                    success: function (data) {
-                        printData(data,tbody);
-                        offset +=7;
-                    }
-                });
-            }
-            
-        })
-    });
-    /* var id_joueur = 0; */
-    function printData(data,tbody){
-        /* id_joueur++; */
-        $.each(data, function(indice,utilisateur){
-            tbody.append(`
-                <tr class="text-center">
-                    <td>${utilisateur.prenom}</td>
-                    <td>${utilisateur.nom}</td>
-                    <td>${utilisateur.score}</td>
-                </tr>
-            `); // valeurs à ajouter à la place des 3 points
-        });
-    }
-</script> -->
 
         <!-- <div class="modal text-center" id="myModal">
       <div class="modal-dialog">
@@ -86,7 +5,7 @@
 
 
               <div class="modal-header">
-                  <h7 class="modal-title">Modify</h7>
+                  <h4 class="modal-title">Modify</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
 
@@ -120,18 +39,13 @@
 
 
 
-
+<div class="container d-flex align-items-center justify-content-center entete-joueur"> Liste des joueurs par score</div>
 <div id="scrollzone" class="col">
-    <table class="table table-bordered text-center">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col">Score</th>
-            <th scope="col">login</th>
-            <th scope="col"colspan="2">Actions</th>
-        </tr>
-        </thead>
+    <table style="border:0px;" class="table table-bordered text-center">
+    <div class=" menu-entete" scope="col">Prenom</div>
+            <div class=" menu-entete" scope="col">Nom</div>
+            <div class=" menu-score" scope="col">Score</div>
+            <div class="text-center menu-action" scope="col" colspan="2">Actions</div>
         <tbody id="tbody">
 
         </tbody>
@@ -163,13 +77,13 @@
 
         function showData(data, tbody) {
             $.each(data, (indice, utilisateur)=> {
-                tbody.append(`<tr>
-                    <td>${utilisateur.prenom}</td>
-                    <td>${utilisateur.nom}</td>
-                    <td>${utilisateur.score}</td>
-                    <td style="display:none;">${utilisateur.login}</td>
-                    <td><button type="button" class="btn btn-outline-primary"id="mdf" data-toggle="modal" data-target="#myModal">Modify</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" id="dlt">Delete</button></td>
+                tbody.append(`<tr style="border:0px;">
+                    <th class=" liste-joueur" style="border:0px;">${utilisateur.prenom}</th>
+                    <th class=" liste-joueur" style="border:0px;">${utilisateur.nom}</th>
+                    <th class=" liste-joueur" style="border:0px;">${utilisateur.score} Pts</th>
+                    <th style="display:none;">${utilisateur.login}</th>
+                    <th class="action-button" style="border:0px;"><button type="button" class="btn text-primary"id="mdf" data-toggle="modal" data-target="#myModal">Modify</button></th>
+                    <th class="action-button" style="border:0px;"><button type="button" class="btn text-danger" id="dlt">Delete</button></th>
                 </tr>`);
             })
         }
@@ -203,7 +117,7 @@
         $(document).on('click','#dlt',function () {
             if (confirm("Do you want to delete?")){ // demande une confirmation de suppression
                 $(this).parents("tr").remove(); // récupère le div parent à supprimer
-                let login= $(this).parents('tr').find('td').eq(3).html(); // supprime le td du tr parent selectionné comportant le login
+                let login= $(this).parents('tr').find('th').eq(3).html(); // supprime le td du tr parent selectionné comportant le login
                
                 $.ajax({
                     type:'post',
@@ -213,7 +127,6 @@
                         login: login
                     },
                     success:function (data) {
-                        alert(data);
                         if (data==="ok"){
                             alert('Successful deletion');
                         }
